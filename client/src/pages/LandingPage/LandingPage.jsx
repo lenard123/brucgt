@@ -1,5 +1,5 @@
 import Marquee from "react-fast-marquee";
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { FacebookFilled, InstagramFilled, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import logo from '@/assets/logo.png';
 import { Carousel, Image } from 'antd';
@@ -129,7 +129,37 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae nobis cumque accusamus voluptates eius perferendis, architecto provident, possimus quia obcaecati sunt. Sunt, sint numquam. Distinctio omnis mollitia deserunt iste ipsum?
+                <div className="bg-primary py-8 px-4">
+                    <div className="max-w-screen-xl mx-auto flex justify-evenly gap-8">
+                        <div>
+                            <div className="font-light text-4xl">BRUCGT</div>
+                            <div>BRU Consumer Goods Trading</div>
+                        </div>
+
+                        <div>
+                            <div className="font-bold">SITE LINKS</div>
+                            <div className="mt-1 flex flex-col">
+                                <a>About Us</a>
+                                <a>Terms and Condition</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className="font-bold">FOLLOW US</div>
+                            <div className="mt-1 flex flex-col">
+                                <a className="flex items-center gap-1">
+                                    <FacebookFilled />
+                                    Facebook
+                                </a>
+                                <a className="flex items-center gap-1">
+                                    <InstagramFilled />
+                                    Instagram
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </footer>
 
         </>
