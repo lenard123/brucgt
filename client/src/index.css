@@ -1,3 +1,4 @@
+@import 'antd/dist/antd.css'; 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +7,14 @@ body {
   @apply bg-slate-100;
 }
 
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: initial;
+}
+
 .center {
   text-align: center;
+}
+
+.page-height {
+  height: calc(100vh - 4rem);
 }
