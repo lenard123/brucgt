@@ -18,3 +18,20 @@ img, svg, video, canvas, audio, iframe, embed, object {
 .page-height {
   height: calc(100vh - 4rem);
 }
+
+.bess-seller-category-card {
+  @apply h-[300px] md:h-[280px] lg:min-h-[400px] relative rounded-lg transition flex items-center justify-center overflow-hidden;
+}
+
+.bess-seller-category-card-text {
+  @apply absolute inset-0 w-full transition flex items-center justify-center text-lg font-semibold;
+  color: transparent;
+  z-index: 1;
+  text-align: center;
+}
+
+
+.bess-seller-category-card:hover .bess-seller-category-card-text {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}

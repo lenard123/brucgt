@@ -46,11 +46,11 @@ export default function LandingPage() {
             </nav>
 
             <section>
-                <video data-src="https://brucgt.com/images/home.mp4" width="100%" loop autoPlay muted />
+                <video src="https://brucgt.com/images/home.mp4" width="100%" loop autoPlay muted />
             </section>
 
             <section className="relative page-height">
-                <video  className="page-height object-cover" data-src="https://brucgt.com/images/vid15.mp4" width="100%" loop autoPlay muted />
+                <video  className="page-height object-cover" src="https://brucgt.com/images/vid15.mp4" width="100%" loop autoPlay muted />
 
                 <div className="absolute inset-0 text-white py-8 px-4 sm:text-2xl flex flex-col justify-center items-center">
                     <div>BRU Consumer Goods Trading</div>
@@ -88,6 +88,49 @@ export default function LandingPage() {
                 </div>
  
             </section>
+
+            <section className="py-4">
+                <div className="bg-white p-8 flex flex-col gap-4">
+                    <h4 className="text-3xl text-center">BEST SELLER CATEGORIES</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3  gap-8 flex-grow">
+                        <div className="bg-pink-500 bess-seller-category-card">
+                            <img className="h-full w-full object-contain absolute inset-0" src="https://brucgt.com/images/IMG2.png" />
+                            <span className="bess-seller-category-card-text">TSHIRT - RED</span>
+                        </div>
+                        <div className="bg-blue-500 bess-seller-category-card">
+                            <img className="h-full w-full object-contain absolute inset-0" src="https://brucgt.com/images/IMG4.png" />
+                            <span className="bess-seller-category-card-text">TSHIRT - BLACK</span>
+                        </div>
+                        <div className="bg-green-500 bess-seller-category-card">
+                            <img className="h-full w-full object-contain absolute inset-0" src="https://brucgt.com/images/IMG3.png" />
+                            <span className="bess-seller-category-card-text">POLO SHIRT - SKY BLUE</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer className="mt-8">
+                <div className="bg-white p-4 pt-16">
+                    <div className="max-w-screen-xl flex flex-col sm:flex-row text-center gap-6 justify-around">
+                        <div className="flex flex-col items-center">
+                            <img className="w-[70px] h-auto" src="/images/deliver.png" />
+                            <span className="text-xs font-bold mt-4">FASTER DELIVERY GUARANTEE.</span>
+                            <span className="text-xs mt-4">Your order will be delivered soon as you order.</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <img className="w-[70px] h-auto" src="/images/quality.png" />
+                            <span className="text-xs font-bold mt-4 flex-grow">TRUSTED BRAND FOR YEARS. </span>
+                            <span clasName="text-xs mt-4">The product brand become a trusted for years.</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <img className="w-[70px] h-auto" src="/images/brand.png" />
+                            <span className="text-xs font-bold mt-4">PROVIDE THE BEST QUALITY PRODUCT.</span>
+                            <span className="text-xs mt-4">The best quality product are here. The best quality you expect. </span>
+                        </div>
+                    </div>
+                </div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae nobis cumque accusamus voluptates eius perferendis, architecto provident, possimus quia obcaecati sunt. Sunt, sint numquam. Distinctio omnis mollitia deserunt iste ipsum?
+            </footer>
 
         </>
     )
