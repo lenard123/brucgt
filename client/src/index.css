@@ -5,3 +5,7 @@
 body {
   @apply bg-slate-100;
 }
+
+.center {
+  text-align: center;
+}
