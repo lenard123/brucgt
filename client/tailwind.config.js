@@ -5,10 +5,13 @@ module.exports = {
   content: [
     "./src/**/*.{jsx,js}",
   ],
+  corePlugins: {
+    preflight: false
+  },
   theme: {
     extend: {
       colors: {
-        primary: colors.emerald['300']
+        primary: '#699429'
       }
     },
   },
