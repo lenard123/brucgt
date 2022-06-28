@@ -1,8 +1,0 @@
-
-
-export default function Main({ children })
-{
-    return(
-        null
-    )
-}
