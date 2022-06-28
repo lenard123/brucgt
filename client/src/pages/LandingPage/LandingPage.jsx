@@ -38,9 +38,8 @@ export default function LandingPage() {
             <section>
                 <Carousel>
                     {images.map((url, i) => (
-                        <div>
+                        <div key={i}>
                             <Image
-                                key={i}
                                 className="object-cover w-screen h-screen"
                                 style={{ height: 'min(75vw, 75vh)' }}
                                 src={url}
