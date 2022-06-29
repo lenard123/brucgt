@@ -21,7 +21,7 @@ export default function Navbar() {
                     <div className="hidden xl:flex justify-center text-lg  font-light gap-4">
                         <Link to='/'>Home</Link>
                         <a href="#">Categories</a>
-                        <a href="#">Shop</a>
+                        <Link to="/shop">Shop</Link>
                         <Link to='/about'>About</Link>
                         <Link to='/contact'>Contact Us</Link>
                     </div>

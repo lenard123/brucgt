@@ -33,7 +33,7 @@ export default function Footer() {
                 </div>
 
             </div>
-            <div className="text-center mt-8">All Rights Reserved 2020 BRU Consumer Goods Trading</div>
+            <div className="text-center mt-8">All Rights Reserved 2022 BRU Consumer Goods Trading</div>
         </footer>
     )
 }
