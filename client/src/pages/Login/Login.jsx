@@ -27,6 +27,9 @@ export default function Login() {
                         </div>
                     </Form>
                 </Card>                
+
+                <div className="text-center mt-2">Don't have an account? Register <Link to='/register'>here</Link></div>
+
             </main>
         </>
     )
