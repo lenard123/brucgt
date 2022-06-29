@@ -1,0 +1,38 @@
+Users
+- id
+- role
+- fullname
+- email
+- password
+- created_at
+- updated_at
+
+Categories
+- id
+- title
+- created_at
+- updated_at
+
+
+Products
+- id
+- category_id
+- title
+- description
+- price
+- thumbnail
+- featured_at
+- published_at
+- created_at
+- updated_at
+
+ProductImages
+- id
+- product_id
+- url
+
+Orders
+- id
+- customer_id
+- product_id
+- quantity

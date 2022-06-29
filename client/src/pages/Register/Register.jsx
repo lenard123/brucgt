@@ -1,6 +1,7 @@
 import { Button, Card, Divider, Form, Input, Typography } from "antd";
 import { Link } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
+import rules from './registerValidation'
 
 const { Title } = Typography
 const { Item } = Form
@@ -18,19 +19,43 @@ export default function Register() {
                     <Divider />
 
                     <Form layout="vertical">
-                        <Item label='Fullname' className='mb-4'>
+                        <Item 
+                            label='Fullname' 
+                            className='mb-4'
+                            name='name'
+                            hasFeedback
+                            rules={rules.fullname}
+                            >
                             <Input size="large" />
                         </Item>
 
-                        <Item label='Email' className='mb-4'>
+                        <Item 
+                            label='Email' 
+                            className='mb-4'
+                            name='email'
+                            hasFeedback
+                            rules={rules.email}
+                            >
                             <Input type='email' size="large" />
                         </Item>
 
-                        <Item label='Password' className='mb-4'>
+                        <Item 
+                            label='Password' 
+                            className='mb-4'
+                            name='password'
+                            hasFeedback
+                            rules={rules.password}
+                            >
                             <Password size="large" />
                         </Item>
 
-                        <Item label='Confirm Password' className='mb-4'>
+                        <Item 
+                            label='Confirm Password' 
+                            className='mb-4'
+                            name='password_confirmation'
+                            hasFeedback
+                            rules={rules.password_confirmation}
+                            >
                             <Password size="large" />
                         </Item>
 
