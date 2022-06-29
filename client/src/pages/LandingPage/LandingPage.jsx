@@ -3,7 +3,7 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 
 export default function LandingPage() {
 
-    const images = [3, 5, 6, 1].map((i) => `/images/banner${i}.png`)
+    const images = [4, 3, 5, 6, 1].map((i) => `/images/banner${i}.png`)
     const products = [
         {
             thumbnail: 'https://brucgt.com/admin_area/product_images/IMG20220409182331-removebg-preview.png',
