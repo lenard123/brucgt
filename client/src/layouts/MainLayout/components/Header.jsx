@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 
 
 export default function Header() {
     return (
         <header className="bg-gray-900 text-white text-sm font-light p-2">
-            <div className="container mx-auto max-w-screen-xl flex">
+            <div className="container mx-auto max-w-screen-xl flex justify-between">
                 {/* Left */}
                 <div className="flex gap-4">
                     <a href="tel:(02) 88015025" className="flex items-center gap-2">
@@ -24,7 +25,8 @@ export default function Header() {
                 </div>
                 {/* Right */}
                 <div className="flex gap-4">
-
+                    <Link to='/login'>Login</Link>
+                    <Link to='/register'>Register</Link>
                 </div>
             </div>
         </header>

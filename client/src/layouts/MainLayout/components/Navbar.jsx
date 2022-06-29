@@ -1,6 +1,6 @@
 import { MenuOutlined, SearchOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import logo from '@/assets/logo.png';
-import { Button, Input } from 'antd';
+import { Button, Dropdown, Input, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
@@ -20,7 +20,17 @@ export default function Navbar() {
                     </a>
                     <div className="hidden xl:flex justify-center text-lg  font-light gap-4">
                         <Link to='/'>Home</Link>
-                        <a href="#">Categories</a>
+                        <Dropdown 
+                            placement='bottom' 
+                            overlay={<Menu items={[
+                                {label: 'T Shirt', key: 1},
+                                {label: 'Polo Shirt', key: 2},
+                                {label: 'Wet Shirt', key: 3},
+                                {label: 'Clothing', key: 4},
+                                {label: 'Bag', key: 5},
+                            ]}/>}>
+                            <a>Categories</a>
+                        </Dropdown>
                         <Link to="/shop">Shop</Link>
                         <Link to='/about'>About</Link>
                         <Link to='/contact'>Contact Us</Link>
