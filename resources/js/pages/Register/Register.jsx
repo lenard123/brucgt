@@ -2,23 +2,26 @@ import { Button, Card, Divider, Form, Input, Typography } from "antd";
 import { Link } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
 import rules from './registerValidation'
+import useRegistrationHandler from "./useRegistrationHandler";
 
 const { Title } = Typography
 const { Item } = Form
 const { Password } = Input
 
 export default function Register() {
+
+    const { handleSubmit, isLoading } = useRegistrationHandler()
+
     return (
         <>
             <Banner title='Register' />
-
 
             <main className="bru-container mt-4">
                 <Card className="max-w-md mx-auto">
                     <Title level={4}> Register A New Account </Title>
                     <Divider />
 
-                    <Form layout="vertical">
+                    <Form layout="vertical" onFinish={handleSubmit}>
                         <Item 
                             label='Fullname' 
                             className='mb-4'
@@ -59,7 +62,7 @@ export default function Register() {
                             <Password size="large" />
                         </Item>
 
-                        <Button type="primary" htmlType="submit" size='large' className='rounded float-right'>Register</Button>
+                        <Button loading={isLoading} type="primary" htmlType="submit" size='large' className='rounded float-right'>Register</Button>
 
                     </Form>
 
