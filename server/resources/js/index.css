@@ -1,0 +1,52 @@
+
+
+body {
+  @apply bg-slate-100;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: initial;
+}
+
+.center {
+  text-align: center;
+}
+
+.page-height {
+  height: calc(100vh - 4rem);
+}
+
+.bru-container {
+  @apply mx-auto container max-w-screen-xl px-4;
+}
+
+.bess-seller-category-card {
+  @apply h-[300px] md:h-[280px] lg:min-h-[400px] relative rounded-lg transition flex items-center justify-center overflow-hidden;
+}
+
+.bess-seller-category-card-text {
+  @apply absolute inset-0 w-full transition flex items-center justify-center text-lg font-semibold;
+  color: transparent;
+  z-index: 1;
+  text-align: center;
+}
+
+
+.bess-seller-category-card:hover .bess-seller-category-card-text {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+/* Resets */
+a {
+  color: unset;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
