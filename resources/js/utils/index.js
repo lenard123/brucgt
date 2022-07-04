@@ -1,34 +1,19 @@
-import _ from "lodash"
-import { useEffect, useState } from "react"
+import { notification } from "antd"
 
-const throwValidationRule = (message) => {
-    return () => ({
-        async validator() {
-            throw new Error(message)
-        }
+export const getValidationErrors = (error) => {
+    if (error?.response?.status === 422) {
+        const { errors } = error.response.data
+        return Object.keys(errors).reduce( (acm, field) => ({
+            ...acm,
+            [field]: { validateStatus: 'error', help: errors[field].join('\n') }
+        }), {} )
+    }
+    return {}
+}
+
+export const showSuccessMessage = (description, message = 'Success') => {
+    notification.success({
+        message,
+        description
     })
-} 
-
-export const useValidationErrors = (rules, error) => {
-
-    const [result, setResult] = useState(rules)
-
-    useEffect(() => {
-        if (error?.response?.status === 422) {
-            const { errors } = error.response.data
-            const temp = {};
-            _.keys(rules).forEach(key => {            
-                temp[key] = rules[key]
-                if (errors[key] !== undefined) {
-                    const rule = errors[key].map(throwValidationRule)
-                    temp[key].push(...rule)
-                }
-            })
-            setResult(temp)
-        } else {
-            setResult(rules)
-        }
-    }, [error])
-
-    return result
 }

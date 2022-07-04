@@ -1,17 +1,16 @@
 import { Button, Card, Divider, Form, Input, Typography } from "antd";
 import { Link } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
+import FormItem from "../../components/FormItem/FormItem";
 import rules from './registerValidation'
 import useRegistrationHandler from "./useRegistrationHandler";
 
 const { Title } = Typography
-const { Item } = Form
 const { Password } = Input
 
 export default function Register() {
 
-    const form = Form.useForm()
-    const { handleSubmit, isLoading } = useRegistrationHandler()
+    const { handleSubmit, isLoading, validationErrors } = useRegistrationHandler()
 
     return (
         <>
@@ -21,47 +20,50 @@ export default function Register() {
                 <Card className="max-w-md mx-auto">
                     <Title level={4}> Register A New Account </Title>
                     <Divider />
-
-                    <Form form={form} layout="vertical" onFinish={handleSubmit}>
-                        <Item 
+                    <Form scrollToFirstError layout="vertical" onFinish={handleSubmit}>
+                        <FormItem
                             label='Fullname' 
                             className='mb-4'
                             name='name'
                             hasFeedback
                             rules={rules.name}
+                            error={validationErrors}
                             >
                             <Input size="large" />
-                        </Item>
+                        </FormItem>
 
-                        <Item 
+                        <FormItem 
                             label='Email' 
                             className='mb-4'
                             name='email'
                             hasFeedback
                             rules={rules.email}
+                            error={validationErrors}
                             >
                             <Input type='email' size="large" />
-                        </Item>
+                        </FormItem>
 
-                        <Item 
+                        <FormItem 
                             label='Password' 
                             className='mb-4'
                             name='password'
                             hasFeedback
                             rules={rules.password}
+                            error={validationErrors}
                             >
                             <Password size="large" />
-                        </Item>
+                        </FormItem>
 
-                        <Item 
+                        <FormItem 
                             label='Confirm Password' 
                             className='mb-4'
                             name='password_confirmation'
                             hasFeedback
                             rules={rules.password_confirmation}
+                            error={validationErrors}
                             >
                             <Password size="large" />
-                        </Item>
+                        </FormItem>
 
                         <Button loading={isLoading} type="primary" htmlType="submit" size='large' className='rounded float-right'>Register</Button>
 
