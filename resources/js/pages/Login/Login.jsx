@@ -1,11 +1,16 @@
+import FormItem from "@/components/FormItem/FormItem";
 import { Button, Card, Divider, Form, Input, Typography } from "antd";
 import { Link } from "react-router-dom";
-import Banner from "../../components/Banner/Banner";
+import Banner from "@/components/Banner/Banner";
+import loginRules from "./loginRules";
+import useLoginHandler from "./useLoginHandler";
 
 const { Title } = Typography
-const { Item } = Form
 
 export default function Login() {
+
+    const { handleSubmit, isLoading, validationErrors } = useLoginHandler()
+
     return (
         <>
             <Banner title='Please Login Below'/>
@@ -13,17 +18,30 @@ export default function Login() {
                 <Card className="max-w-md mx-auto">
                     <Title level={4}>Login to your account</Title>
                     <Divider />
-                    <Form layout="vertical">
-                        <Item label='Email' className="mb-4">
+                    <Form onFinish={handleSubmit} layout="vertical">
+                        <FormItem 
+                            name='email' 
+                            label='Email' 
+                            className="mb-4"
+                            rules={loginRules.email}
+                            error={validationErrors}
+                            >
                             <Input size="large"/>
-                        </Item>
-                        <Item label='Password' className="mb-4">
+                        </FormItem>
+
+                        <FormItem 
+                            name='password' 
+                            label='Password' 
+                            className="mb-4"
+                            rules={loginRules.password}
+                            error={validationErrors}
+                            >
                             <Input type='password' size="large"/>
-                        </Item>
+                        </FormItem>
 
                         <div className="flex justify-between">
                             <Link to='/forgot-password'>Forgot Password?</Link>
-                            <Button type="primary" htmlType="submit" size='large' className='rounded float-right'>Submit</Button>
+                            <Button loading={isLoading} type="primary" htmlType="submit" size='large' className='rounded float-right'>Submit</Button>
                         </div>
                     </Form>
                 </Card>                

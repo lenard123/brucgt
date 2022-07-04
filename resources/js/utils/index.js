@@ -17,3 +17,5 @@ export const showSuccessMessage = (description, message = 'Success') => {
         description
     })
 }
+
+export const sleep = (duration = 2000) => new Promise(resolve => setTimeout(resolve, duration))

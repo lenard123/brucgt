@@ -16,7 +16,6 @@ export default function useRegistrationHandler()
     const validationErrors = getValidationErrors(error)
 
     const handleSubmit = (data) => {
-        if (isLoading) return;
         mutate(data)
     }
 
