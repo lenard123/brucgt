@@ -10,6 +10,7 @@ const { Password } = Input
 
 export default function Register() {
 
+    const form = Form.useForm()
     const { handleSubmit, isLoading } = useRegistrationHandler()
 
     return (
@@ -21,13 +22,13 @@ export default function Register() {
                     <Title level={4}> Register A New Account </Title>
                     <Divider />
 
-                    <Form layout="vertical" onFinish={handleSubmit}>
+                    <Form form={form} layout="vertical" onFinish={handleSubmit}>
                         <Item 
                             label='Fullname' 
                             className='mb-4'
                             name='name'
                             hasFeedback
-                            rules={rules.fullname}
+                            rules={rules.name}
                             >
                             <Input size="large" />
                         </Item>

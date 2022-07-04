@@ -1,15 +1,21 @@
+import { useEffect, useState } from "react";
 import { useMutation } from "react-query"
 import { registerApi } from "../../apis/authApi";
-
+import { useValidationErrors } from "../../utils";
+import baseRules from './registerValidation'
 
 export default function useRegistrationHandler()
 {
+    const { mutate, isLoading, error } = useMutation(registerApi)
+    const validationErrors = useValidationErrors(baseRules, error)
 
-    const { execute, isLoading } = useMutation(registerApi)
+    useEffect(() => {
+        // console.log({form})
+    }, [validationErrors])
 
     const handleSubmit = (data) => {
         if (isLoading) return;
-        execute(data)
+        mutate(data)
     }
 
     return {

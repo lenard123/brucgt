@@ -2,6 +2,12 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react'
 
+const getDevServer = () => {
+    if (process.env.USER === 'gitpod') {
+        return `3000-${process.env.GITPOD_WORKSPACE_ID}.${process.env.GITPOD_WORKSPACE_CLUSTER_HOST}`
+    }
+}
+
 export default defineConfig({
     plugins: [
         react(),
@@ -23,7 +29,7 @@ export default defineConfig({
         https: false,
         host: 'localhost',
         hmr: {
-            host: '3000-lenard123-brucgt-anw65a4gdds.ws-us51.gitpod.io',
+            host: getDevServer(),
             clientPort: 443
         }
     }

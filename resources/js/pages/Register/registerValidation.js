@@ -1,9 +1,9 @@
 
 
 export default {
-    fullname: [
+    name: [
         { required: true, message: 'Please enter your fullname' },
-        { pattern: /^[a-z ,.'-]+$/i, message: 'Please enter a valid name' }
+        { pattern: /^[a-z ,.'-]+$/i, message: 'Please enter a valid name' },
     ],
     email: [
         { required: true, message: 'Please enter your email' },

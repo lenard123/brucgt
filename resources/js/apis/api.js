@@ -3,5 +3,5 @@ import Http from "../services/Http"
 
 
 export const getCsrfCookie = async () => {
-    return Cookies.get('XSRF-TOKEN') || Http.get('/csrf-cookie')
+    return Cookies.get('XSRF-TOKEN') || await Http.get('/csrf-cookie')
 }
