@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
 
-    const user = undefined
-    // const { user } = useAuth()
+    const { isLoggedIn } = useAuth()
     const { showLogoutModal } = useLogoutModal()
 
     return (
@@ -31,7 +30,7 @@ export default function Header() {
                 </div>
                 {/* Right */}
                 <div className="flex gap-4">
-                    {user
+                    {isLoggedIn
                         ? (
                             <>
                                 <Link to='/profile'>Account</Link>

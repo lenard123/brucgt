@@ -9,23 +9,19 @@ export default function useRegistrationHandler()
 {
     const navigate = useNavigate()
 
-    const { register, isRegistering: isLoading, error } = useAuth()
+    // const { register, isRegistering: isLoading, error } = useAuth()
 
-    // const { mutate, isLoading,  error } = useMutation(registerApi, {
-    //     onSuccess() {
-    //         showSuccessMessage('You can now proceed to login', 'Registered Successfully')
-    //         navigate('/login')
-    //     }
-    // })
+    const { mutate, isLoading,  error } = useMutation(registerApi, {
+        onSuccess() {
+            showSuccessMessage('You can now proceed to login', 'Registered Successfully')
+            navigate('/login')
+        }
+    })
+
     const validationErrors = getValidationErrors(error)
 
     const handleSubmit = (data) => {
-        register(data, {
-            onSuccess() {
-                showSuccessMessage('Registered Successfully')
-                // navigate('/login')
-            }
-        })
+        mutate(data)
     }
 
     return {

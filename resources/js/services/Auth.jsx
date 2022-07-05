@@ -1,6 +1,9 @@
 import { fetchCurrentUser, loginApi, logoutApi } from "@/apis/authApi"
-import { useState } from "react"
-import { useMutation, useQuery } from "react-query"
+import { showSuccessMessage } from "@/utils"
+import { Modal } from "antd"
+import { useEffect, useState } from "react"
+import { useMutation, useQuery, useQueryClient } from "react-query"
+import { Navigate } from "react-router-dom"
 
 const key = "auth-user"
 
@@ -8,29 +11,39 @@ const Loading = function () {
     return 'Loading...'
 }
 
-const loginFn = async (credential) => {
-    const { data } = await loginApi(credential) 
-    return data
+
+export const useLogout = () => {
+    const queryClient = useQueryClient()
+    return useMutation(logoutApi, {
+        onSuccess() {
+            queryClient.setQueryData(key, null)
+        }
+    })
 }
 
-const useLogin = () => {
-    return useMutation(loginFn)
+export const useLogin = () => {
+    const queryClient = useQueryClient()
+    return useMutation(loginApi, {
+        onSuccess(data) {
+            queryClient.setQueryData(key, data)
+        }
+    })
 }
 
 export const useAuth = function () {
     const [initializing, setInitializing] = useState(true)
-    const login = useLogin()
 
-
-    const { user } = useQuery({
+    const { data:user, refetch } = useQuery({
         queryKey: key,
         queryFn: fetchCurrentUser,
+        initialData: null,
         enabled: false,
-        retry: (failureCount, error) => {
-            if (failureCount >= 3) return false
 
+        retry: (failureCount, error) => {
             //Unauthenticated
             if (error?.response?.status === 401) return false
+
+            if (failureCount >= 3) return false
 
             return true
         },
@@ -39,19 +52,22 @@ export const useAuth = function () {
         }
     })
 
-    const isLoggedIn = user !== undefined
+    const isLoggedIn = user !== null
 
     return {
         user,
         initializing,
         isLoggedIn,
-        login,
-        logout: logoutApi
+        refetch,
     }
 }
 
 export const AuthProvider = function ({ children }) {
-    const { initializing } = useAuth()
+    const { initializing, refetch, isLoggedIn } = useAuth()
+
+    useEffect(() => {
+        refetch()
+    }, [])
 
     if (initializing)
         return <Loading />
@@ -59,36 +75,10 @@ export const AuthProvider = function ({ children }) {
     return children
 }
 
-// import { fetchCurrentUser, loginApi, logoutApi, registerApi } from '@/apis/authApi';
-// import { Modal } from 'antd';
-// import { initReactQueryAuth } from 'react-query-auth';
-// import { Navigate } from 'react-router-dom';
-
-// export const { AuthProvider, useAuth } = initReactQueryAuth({
-
-//     loadUser: async function() {
-//         const { data } = await fetchCurrentUser()
-//         return data
-//     },
-
-//     loginFn: async function (credential) {
-//         const { data } = await loginApi(credential)
-//         return data
-//     },
-
-//     logoutFn: logoutApi,
-
-//     registerFn: async function (userData) {
-//         const { data } = await registerApi(userData)
-//         return data
-//     }
-
-// })
-
 export const GuestOnly = function ({ element }) {
-    const { user } = useAuth()
+    const { isLoggedIn } = useAuth()
 
-    if (user) {
+    if (isLoggedIn) {
         return <Navigate to='/' />
     }
 
@@ -99,14 +89,15 @@ export const GuestOnly = function ({ element }) {
 
 export const useLogoutModal = function () {
 
-    const { logout } = useAuth()
+    const { mutateAsync } = useLogout()
 
     const showLogoutModal = () => {
         Modal.confirm({
             title: 'Confirm Logout?',
             content: 'Are you sure to logout?',
-            onOk() {
-                return logout()
+            async onOk() {
+                await mutateAsync()
+                showSuccessMessage('Logout Successfully')
             }
         })
     }

@@ -6,9 +6,10 @@ export const registerApi = async (data) => {
     return await Http.post('/register', data)
 }
 
-export const loginApi = async (data) => {
+export const loginApi = async (credential) => {
     await getCsrfCookie()
-    return await Http.post('/login', data)
+    const { data } = await Http.post('/login', credential)
+    return data
 }
 
 export const logoutApi = async() => {
@@ -18,5 +19,6 @@ export const logoutApi = async() => {
 
 export const fetchCurrentUser = async () => {
     await getCsrfCookie()
-    return await Http.get('/user')
+    const { data } = await Http.get('/user')
+    return data
 }
