@@ -1,7 +1,13 @@
+import { useAuth, useLogoutModal } from "@/services/Auth";
 import { Link } from "react-router-dom";
 
 
 export default function Header() {
+
+    const user = undefined
+    // const { user } = useAuth()
+    const { showLogoutModal } = useLogoutModal()
+
     return (
         <header className="bg-gray-900 text-white text-sm font-light p-2">
             <div className="container mx-auto max-w-screen-xl flex justify-between">
@@ -25,8 +31,20 @@ export default function Header() {
                 </div>
                 {/* Right */}
                 <div className="flex gap-4">
-                    <Link to='/login'>Login</Link>
-                    <Link to='/register'>Register</Link>
+                    {user
+                        ? (
+                            <>
+                                <Link to='/profile'>Account</Link>
+                                <Link onClick={showLogoutModal} to='#'>Logout</Link>
+                            </>
+                        )
+                        : (
+                            <>
+                                <Link to='/login'>Login</Link>
+                                <Link to='/register'>Register</Link>
+                            </>
+                        )
+                    }
                 </div>
             </div>
         </header>

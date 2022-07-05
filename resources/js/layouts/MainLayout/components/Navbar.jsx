@@ -1,5 +1,5 @@
 import { MenuOutlined, SearchOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Input, Menu } from 'antd';
+import { Avatar, Button, Dropdown, Input, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {

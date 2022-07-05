@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout/MainLayout";
+import { GuestOnly } from "./services/Auth";
 
 const Shop = React.lazy(() => import('./pages/Shop/Shop'))
 const LandingPage = React.lazy(() => import('./pages/LandingPage/LandingPage'))
@@ -19,8 +20,8 @@ export default function Router()
                     <Route path='about' element={<About />} />
                     <Route path='contact' element={<Contact />} />
                     <Route path='shop' element={<Shop />} />
-                    <Route path='login' element={<Login />} />
-                    <Route path='register' element={<Register />} />
+                    <Route path='login' element={<GuestOnly element={<Login />} />} />
+                    <Route path='register' element={<GuestOnly element={<Register />} />} />
                 </Route>
             </Routes>
         </BrowserRouter>

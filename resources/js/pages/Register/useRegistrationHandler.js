@@ -1,3 +1,5 @@
+import { useAuth } from "@/services/Auth";
+import { useState } from "react";
 import { useMutation } from "react-query"
 import { useNavigate } from "react-router-dom";
 import { registerApi } from "../../apis/authApi";
@@ -7,16 +9,23 @@ export default function useRegistrationHandler()
 {
     const navigate = useNavigate()
 
-    const { mutate, isLoading,  error } = useMutation(registerApi, {
-        onSuccess() {
-            showSuccessMessage('You can now proceed to login', 'Registered Successfully')
-            navigate('/login')
-        }
-    })
+    const { register, isRegistering: isLoading, error } = useAuth()
+
+    // const { mutate, isLoading,  error } = useMutation(registerApi, {
+    //     onSuccess() {
+    //         showSuccessMessage('You can now proceed to login', 'Registered Successfully')
+    //         navigate('/login')
+    //     }
+    // })
     const validationErrors = getValidationErrors(error)
 
     const handleSubmit = (data) => {
-        mutate(data)
+        register(data, {
+            onSuccess() {
+                showSuccessMessage('Registered Successfully')
+                // navigate('/login')
+            }
+        })
     }
 
     return {

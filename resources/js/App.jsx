@@ -3,21 +3,21 @@ import { Spin } from "antd";
 import Router from "./Router";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { useEffect, useMemo } from "react";
+import { AuthProvider } from "./services/Auth";
 
+const queryClient = new QueryClient()
+
+//Set the default indicator
+Spin.setDefaultIndicator(<LoadingOutlined style={{ fontSize: '48px' }} />)
 
 function App() {
 
-  const queryClient = useMemo(() => new QueryClient(), [])
-
-  useEffect(() => {
-    //Set the default indicator
-    Spin.setDefaultIndicator(<LoadingOutlined style={{ fontSize: '48px' }} />)
-  }, [])
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Router />
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   )

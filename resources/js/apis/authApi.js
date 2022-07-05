@@ -10,3 +10,13 @@ export const loginApi = async (data) => {
     await getCsrfCookie()
     return await Http.post('/login', data)
 }
+
+export const logoutApi = async() => {
+    await getCsrfCookie()
+    return await Http.post('/logout')
+}
+
+export const fetchCurrentUser = async () => {
+    await getCsrfCookie()
+    return await Http.get('/user')
+}
