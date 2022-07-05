@@ -3,7 +3,6 @@ import { Spin } from "antd";
 import Router from "./Router";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { AuthProvider } from "./services/Auth";
 
 const queryClient = new QueryClient()
 
@@ -15,10 +14,8 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <Router />
-      </AuthProvider>
-      <ReactQueryDevtools />
+      <Router />
+      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   )
 }
