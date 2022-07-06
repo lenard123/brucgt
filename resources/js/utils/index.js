@@ -19,3 +19,9 @@ export const showSuccessMessage = (description, message = 'Success') => {
 }
 
 export const sleep = (duration = 2000) => new Promise(resolve => setTimeout(resolve, duration))
+
+export const invoke = (cb, ...props) => {
+    if (typeof cb === 'function') {
+        cb(...props)
+    }
+}

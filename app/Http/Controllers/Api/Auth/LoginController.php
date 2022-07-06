@@ -30,7 +30,7 @@ class LoginController extends Controller
         return $user;
     }
 
-    private function getUser(string $email) : User
+    protected function getUser(string $email) : User
     {
         return User::where('email', $email)->firstOr(function() {
             $this->throwValidationError([

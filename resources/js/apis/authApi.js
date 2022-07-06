@@ -22,3 +22,9 @@ export const fetchCurrentUser = async () => {
     const { data } = await Http.get('/user')
     return data
 }
+
+export const adminLoginApi = async (credential) => {
+    await getCsrfCookie()
+    const { data } = await Http.get('/admin/login', credential)
+    return data
+}

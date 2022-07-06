@@ -1,8 +1,8 @@
-import { fetchCurrentUser, loginApi, logoutApi } from "@/apis/authApi"
+import { loginApi, logoutApi } from "@/apis/authApi"
+import useCurrentUser from "@/queries/useCurrentUser"
 import { showSuccessMessage } from "@/utils"
 import { Modal } from "antd"
-import { useEffect, useState } from "react"
-import { useMutation, useQuery, useQueryClient } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { Navigate } from "react-router-dom"
 
 const key = "auth-user"
@@ -12,13 +12,15 @@ const Loading = function () {
 }
 
 
-export const useLogout = () => {
-    const queryClient = useQueryClient()
-    return useMutation(logoutApi, {
-        onSuccess() {
-            queryClient.setQueryData(key, null)
-        }
-    })
+export const useAuth = function (option = {}) {
+    const { data: user } = useCurrentUser(key, option)
+
+    const isLoggedIn = !!user
+
+    return {
+        user,
+        isLoggedIn,
+    }
 }
 
 export const useLogin = () => {
@@ -30,46 +32,20 @@ export const useLogin = () => {
     })
 }
 
-export const useAuth = function () {
-    const [initializing, setInitializing] = useState(true)
-
-    const { data:user, refetch } = useQuery({
-        queryKey: key,
-        queryFn: fetchCurrentUser,
-        initialData: null,
-        enabled: false,
-
-        retry: (failureCount, error) => {
-            //Unauthenticated
-            if (error?.response?.status === 401) return false
-
-            if (failureCount >= 3) return false
-
-            return true
-        },
-        onSettled() {
-            setInitializing(false)
+export const useLogout = () => {
+    const queryClient = useQueryClient()
+    return useMutation(logoutApi, {
+        onSuccess() {
+            queryClient.setQueryData(key, null)
         }
     })
-
-    const isLoggedIn = user !== null
-
-    return {
-        user,
-        initializing,
-        isLoggedIn,
-        refetch,
-    }
 }
 
 export const AuthProvider = function ({ children }) {
-    const { initializing, refetch, isLoggedIn } = useAuth()
+    
+    const { isLoading } = useCurrentUser(key)
 
-    useEffect(() => {
-        refetch()
-    }, [])
-
-    if (initializing)
+    if (isLoading)
         return <Loading />
 
     return children
@@ -83,7 +59,6 @@ export const GuestOnly = function ({ element }) {
     }
 
     return element
-
 }
 
 
