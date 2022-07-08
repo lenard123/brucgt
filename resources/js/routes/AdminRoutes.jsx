@@ -22,16 +22,15 @@ const AdminRoutes = function () {
     return (
         <Routes>
             <Route 
+                path="/*" 
+                element={
+                    <AdminOnly element={<AdminDashboardRoutes />} />
+                } 
+            />
+            <Route 
                 path="login" 
                 element={ 
                     <PreventAdmin element={<AdminLogin/>} />
-                } 
-            />
-
-            <Route 
-                path="*" 
-                element={
-                    <AdminOnly element={<AdminDashboardRoutes />} />
                 } 
             />
         </Routes>
