@@ -34,6 +34,7 @@ export default defineConfig({
         https: false,
         host: 'localhost',
         hmr: {
+            protocol: 'wss',
             host: getDevServer(),
             clientPort: 443
         }
