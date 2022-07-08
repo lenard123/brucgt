@@ -48,4 +48,9 @@ class User extends Authenticatable
             ? Hash::make($password)
             : $password;
     }
+
+    public function isAdmin() : bool
+    {
+        return $this->role === 'admin';
+    }
 }

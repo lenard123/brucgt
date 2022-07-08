@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers\Api;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +18,4 @@ use Illuminate\Support\Facades\Route;
 //Routes for authentication
 require 'auth.php';
 
-//Routes for admin
-Route::group(['prefix' => 'admin'], function () {
-    require 'admin.php';
-});
+Route::post('/category', [CategoryController::class, 'create'])->middleware('auth:sanctum', 'admin');
