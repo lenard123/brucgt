@@ -7,7 +7,7 @@ import Dropdown from "./Dropdown";
 
 export default function Sidebar() {
 
-    const [visible, setVisible] = useState(true)
+    const [visible, setVisible] = useState(false)
 
     return (
         <div
