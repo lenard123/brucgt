@@ -14,14 +14,14 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         $user = $this->getUser($request->email);
 
-        if (!Hash::check($request->password, $user->password)) {
+        if (! Hash::check($request->password, $user->password)) {
             $this->throwValidationError([
-                'email' => 'Wrong email or password.'
+                'email' => 'Wrong email or password.',
             ]);
         }
 
@@ -30,11 +30,11 @@ class LoginController extends Controller
         return $user;
     }
 
-    protected function getUser(string $email) : User
+    protected function getUser(string $email): User
     {
-        return User::where('email', $email)->firstOr(function() {
+        return User::where('email', $email)->firstOr(function () {
             $this->throwValidationError([
-                'email' => 'Sorry, the email you entered has not yet been registered to our site.'
+                'email' => 'Sorry, the email you entered has not yet been registered to our site.',
             ]);
         });
     }

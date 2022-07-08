@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Routes for authentication 
+//Routes for authentication
 require 'auth.php';
 
-
 //Routes for admin
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin'], function () {
     require 'admin.php';
 });
