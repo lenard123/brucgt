@@ -20,7 +20,12 @@ export default defineConfig({
             less: {
                 javascriptEnabled: true,
                 modifyVars: {
-                    'primary-color': '#699429'
+                    'primary-color': '#699429',
+                    'screen-xs': '360px',
+                    'screen-sm': '640px',
+                    'screen-md': '768px',
+                    'screen-lg': '1024px',
+                    'screen-xl': '1280px'
                 }
             }
         }
