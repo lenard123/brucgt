@@ -1,4 +1,4 @@
-import { loginApi, logoutApi } from "@/apis/authApi"
+import { adminLoginApi, loginApi, logoutApi } from "@/apis/authApi"
 import useCurrentUser from "@/queries/useCurrentUser"
 import { showSuccessMessage } from "@/utils"
 import { Modal } from "antd"
@@ -17,15 +17,27 @@ export const useAuth = function (option = {}) {
 
     const isLoggedIn = !!user
 
+    const isAdmin = user?.role === 'admin'
+
     return {
         user,
         isLoggedIn,
+        isAdmin
     }
 }
 
 export const useLogin = () => {
     const queryClient = useQueryClient()
     return useMutation(loginApi, {
+        onSuccess(data) {
+            queryClient.setQueryData(key, data)
+        }
+    })
+}
+
+export const useAdminLogin = () => {
+    const queryClient = useQueryClient()
+    return useMutation(adminLoginApi, {
         onSuccess(data) {
             queryClient.setQueryData(key, data)
         }
@@ -56,6 +68,26 @@ export const GuestOnly = function ({ element }) {
 
     if (isLoggedIn) {
         return <Navigate to='/' />
+    }
+
+    return element
+}
+
+export const AdminOnly = function ({ element }) {
+    const { isAdmin } = useAuth()
+
+    if (!isAdmin) {
+        return <Navigate to='/admin_area/login' />
+    }
+
+    return element
+}
+
+export const PreventAdmin = function ({ element }) {
+    const { isAdmin } = useAuth()
+
+    if (isAdmin) {
+        return <Navigate to='/admin_area' />
     }
 
     return element

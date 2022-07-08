@@ -1,0 +1,29 @@
+* {
+    border-width: 0;
+    border-style: solid;
+}
+
+body {
+    @apply bg-slate-100;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: initial;
+}
+
+/* Resets */
+a {
+    color: unset;
+}
+
+button {
+    background: none;
+    border: none;
+}
