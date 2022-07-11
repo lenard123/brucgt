@@ -1,3 +1,6 @@
 export { default as Banner } from './Banner/Banner'
 export { default as FormItem } from './FormItem/FormItem'
 export { default as ProductCard } from './ProductCard/ProductCard'
+export { default as AdminContainer } from './AdminContainer/AdminContainer'
+export { default as AdminHeader } from './AdminHeader/AdminHeader'
+export { default as UploadButton } from './UploadButton/UploadButton'

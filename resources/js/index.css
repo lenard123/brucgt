@@ -54,6 +54,10 @@
   @apply text-red-400 bg-red-100 border-red-400 hover:text-white hover:bg-red-400;
 }
 
+.block > .ant-upload.ant-upload-select {
+  display: block;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

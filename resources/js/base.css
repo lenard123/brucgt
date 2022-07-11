@@ -26,4 +26,5 @@ a {
 button {
     background: none;
     border: none;
+    border-style: solid;
 }
