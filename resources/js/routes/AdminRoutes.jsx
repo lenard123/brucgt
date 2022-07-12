@@ -6,15 +6,19 @@ import { Route, Routes } from "react-router-dom"
 import Categories from "@/pages/Admin/Categories/Categories"
 import CreateCategory from "@/pages/Admin/Categories/CreateCategory"
 import AllProducts from "@/pages/Admin/Products/All/AllProducts"
+import CreateProduct from "@/pages/Admin/Products/Create/CreateProduct"
+import Attributes from "@/pages/Admin/Attributes/Attributes"
 
 const AdminDashboardRoutes = function () {
     return (
         <AdminLayout>
             <Routes>
                 <Route index element={<Dashboard />} />
+                <Route path="products/create" element={<CreateProduct />} />
                 <Route path="products/all" element={<AllProducts />} />
                 <Route path="categories" element={<Categories />} />
                 <Route path="categories/create" element={<CreateCategory />} />
+                <Route path="attributes" element={<Attributes />} />
             </Routes>
         </AdminLayout>
     )

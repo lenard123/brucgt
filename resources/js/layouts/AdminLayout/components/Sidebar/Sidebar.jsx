@@ -59,7 +59,7 @@ export default function Sidebar() {
                     <div className="py-2 pl-12 hover:text-gray-300">Add Product</div>
                     <Link to='/admin_area/products/all' className="py-2 pl-12 hover:text-gray-300">All Products</Link>
                     <Link to='/admin_area/categories' className="py-2 pl-12 block hover:text-gray-300">Category</Link>
-                    <div className="py-2 pl-12 hover:text-gray-300">Attributes</div>
+                    <Link to='/admin_area/attributes' className="py-2 pl-12 hover:text-gray-300">Attributes</Link>
                 </Dropdown>
 
                 <Link to='/admin_area' className="transition-all text-sm flex hover:bg-[#181827] text-[#a2a3b7] hover:text-white py-2" href="#">
