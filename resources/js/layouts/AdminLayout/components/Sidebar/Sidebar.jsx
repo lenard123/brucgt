@@ -82,9 +82,8 @@ export default function Sidebar() {
                     label={'Reports'}
                     icon={<FileTextFilled />}
                 >
-                    <div className="py-2 pl-12 hover:text-gray-300">ABC</div>
-                    <div className="py-2 pl-12 hover:text-gray-300">DEF</div>
-                    <div className="py-2 pl-12 hover:text-gray-300">GHI</div>
+                    <div className="py-2 pl-12 hover:text-gray-300">Sales Report</div>
+                    <div className="py-2 pl-12 hover:text-gray-300">Best Seller</div>
                 </Dropdown>
 
             </nav>
