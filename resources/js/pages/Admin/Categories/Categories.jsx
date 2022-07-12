@@ -67,7 +67,7 @@ export default function Categories() {
             <div className="mt-6 bg-white rounded shadow">
 
                 <div className="p-4 border-b border-gray-200">
-                    <span className="font-semibold text-lg text-gray-800">List of Categories</span>
+                    <span className="font-semibold text-gray-800">List of Categories</span>
                 </div>
 
                 <div className="p-4">

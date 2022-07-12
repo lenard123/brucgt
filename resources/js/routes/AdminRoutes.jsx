@@ -5,12 +5,14 @@ import { AdminOnly, PreventAdmin } from "@/services/Auth"
 import { Route, Routes } from "react-router-dom"
 import Categories from "@/pages/Admin/Categories/Categories"
 import CreateCategory from "@/pages/Admin/Categories/CreateCategory"
+import AllProducts from "@/pages/Admin/Products/All/AllProducts"
 
 const AdminDashboardRoutes = function () {
     return (
         <AdminLayout>
             <Routes>
                 <Route index element={<Dashboard />} />
+                <Route path="products/all" element={<AllProducts />} />
                 <Route path="categories" element={<Categories />} />
                 <Route path="categories/create" element={<CreateCategory />} />
             </Routes>

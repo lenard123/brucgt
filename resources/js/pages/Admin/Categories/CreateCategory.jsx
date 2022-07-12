@@ -48,7 +48,7 @@ export default function CreateCategory() {
 
             <div className="mt-6 bg-white shadow rounded">
                 <div className="p-4 border-b border-gray-200">
-                    <span className="font-semibold text-lg text-gray-800">Category Information</span>
+                    <span className="font-semibold text-gray-800">Category Information</span>
                 </div>
                 <div className="p-4 max-w-screen-sm mx-auto">
                     <Form

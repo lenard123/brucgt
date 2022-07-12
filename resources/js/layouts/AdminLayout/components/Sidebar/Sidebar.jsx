@@ -56,8 +56,8 @@ export default function Sidebar() {
                         </svg>
                     }
                 >
-                    <div className="py-2 pl-12 hover:text-gray-300">Add New Products</div>
-                    <div className="py-2 pl-12 hover:text-gray-300">All Products</div>
+                    <div className="py-2 pl-12 hover:text-gray-300">Add Product</div>
+                    <Link to='/admin_area/products/all' className="py-2 pl-12 hover:text-gray-300">All Products</Link>
                     <Link to='/admin_area/categories' className="py-2 pl-12 block hover:text-gray-300">Category</Link>
                     <div className="py-2 pl-12 hover:text-gray-300">Attributes</div>
                 </Dropdown>
