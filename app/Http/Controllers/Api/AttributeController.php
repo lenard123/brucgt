@@ -16,4 +16,9 @@ class AttributeController extends Controller
 
         return Attribute::create($request->only('name'));
     }
+
+    public function index()
+    {
+        return Attribute::all();
+    }
 }

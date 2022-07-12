@@ -8,6 +8,7 @@ import CreateCategory from "@/pages/Admin/Categories/CreateCategory"
 import AllProducts from "@/pages/Admin/Products/All/AllProducts"
 import CreateProduct from "@/pages/Admin/Products/Create/CreateProduct"
 import Attributes from "@/pages/Admin/Attributes/Attributes"
+import AttributeValues from "@/pages/Admin/Attributes/AttributeValues"
 
 const AdminDashboardRoutes = function () {
     return (
@@ -19,6 +20,7 @@ const AdminDashboardRoutes = function () {
                 <Route path="categories" element={<Categories />} />
                 <Route path="categories/create" element={<CreateCategory />} />
                 <Route path="attributes" element={<Attributes />} />
+                <Route path="attributes/:id" element={<AttributeValues />} />
             </Routes>
         </AdminLayout>
     )

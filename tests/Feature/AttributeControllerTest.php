@@ -44,4 +44,10 @@ class AttributeControllerTest extends TestCase
             ->assertCreated()
             ->assertJson(['name' => 'test2']);
     }
+
+    public function testFetchAllAttributes()
+    {
+        $this->json('GET', '/api/attribute')
+            ->assertStatus(200);
+    }
 }

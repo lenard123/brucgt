@@ -54,6 +54,10 @@
   @apply text-red-400 bg-red-100 border-red-400 hover:text-white hover:bg-red-400;
 }
 
+.circle-icon-btn.circle-icon-btn-blue {
+  @apply text-blue-400 bg-blue-100 border-blue-400 hover:text-white hover:bg-blue-400;
+}
+
 .block > .ant-upload.ant-upload-select {
   display: block;
 }

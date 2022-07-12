@@ -20,6 +20,8 @@ require 'auth.php';
 
 Route::get('/category', [CategoryController::class, 'index']);
 Route::post('/category', [CategoryController::class, 'create'])->middleware('auth:sanctum', 'admin');
+
+Route::get('/attribute', [AttributeController::class, 'index']);
 Route::post('/attribute', [AttributeController::class, 'create'])->middleware('auth:sanctum', 'admin');
 
 Route::any('/{path}', fn() => abort(404))->where('path', '(.*)');
