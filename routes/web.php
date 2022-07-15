@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/login', 'index')->name('login');
+Route::view('/logout', 'index')->name('logout');
 Route::view('/{path}', 'index')->where('path', '(.*)');
